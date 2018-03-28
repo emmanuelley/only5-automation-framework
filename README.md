@@ -26,10 +26,7 @@ The Test Automation Framework allows you to create the tests for:
 * Java JDK 1.8 above
 * Maven 3.5 above
 * TestNG 6.11
-* Rest-Assured 3.0.3
-* Appium 4.1.2
-* Mongo Driver 2.14.3
-* Selenium WebDriver 3.4
+* Selenium WebDriver 3.6+
 
 ## Setup Info
 * Download this zip file and Unzip it
