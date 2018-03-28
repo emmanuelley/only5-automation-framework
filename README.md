@@ -9,9 +9,7 @@ The Test Automation Framework allows you to create the tests for:
   * Edge Driver
   * Internet Explorer 11
 * Mobile Apps including:
-  * Native Android
   * Android Web
-  * Native iOS (Need to be tested)
   * iOS Web
 * RESTFul APIs
 
@@ -55,8 +53,8 @@ The Test Automation Framework allows you to create the tests for:
 					<activeByDefault>true</activeByDefault>
 				</activation>
 				<properties>
-					<nishaanx.chrome.driver>PATH_TO_THE_EXECUTABLE</nishaanx.chrome.driver>
-					<nishaanx.gecko.driver>PATH_TO_THE_EXECUTABLE</nishaanx.gecko.driver>
+					<only5.chrome.driver>PATH_TO_THE_EXECUTABLE</only5.chrome.driver>
+					<only5.gecko.driver>PATH_TO_THE_EXECUTABLE</only5.gecko.driver>
 					<nishaanx.ie.driver>PATH_TO_THE_EXECUTABLE</nishaanx.ie.driver>
 				</properties>
 			</profile>
@@ -133,40 +131,3 @@ To create a new Page, here are the steps:
      }
    }
    ```
-## Writing an API Test
-The REST API tests can be tested using this framework. It is supported using rest-assured api which allows you to:
-* Define your own Serialization/Deserialization logic
-* Define your own Authentication Scheme
-	* Supports:
-		* Basic Authentication
-		* Digest Authentication
-		* Preemptive Authentication
-		* oAuth
-In order to write the tests, you need to firstly do the following
-* Create the Data Structures for each of your endpoints (This could be a manual task based on the examples. Or we can create data structures using the either the swagger file or the json schema that is created)
-* Create the Test Data using the Enums which will implement the interface Supplier
-* Finally write your test as follows:
-```
-@Test
-    public void sampleApiTests() {
-        Authentication auth = new DefaultAuthentication(new AuthContext());
-        RestManager manager = new RestManager(BasicMediaTypes.JSON, auth, null);
-
-        Session session = SessionEnums.VALID_SESSION_INFO.getData();
-
-        Response response = manager.post("https://beta.abcd.in", "/sessions/connect", session);
-        assertEquals(response.statusCode(), 200, "Something went wrong with the request");
-        MemberResponse memResp = response.as(MemberResponse.class);
-        String ssoToken = memResp.getSsoToken();
-
-        List<Header> headerArr = new ArrayList<>();
-        Header authHeader = new Header("Authorization", ssoToken);
-        headerArr.add(authHeader);
-        Headers headers = new Headers(headerArr);
-        manager = new RestManager(BasicMediaTypes.JSON, auth, headers);
-        response = manager.get("https://beta.nishaanx.in", "/route_trips");
-        assertEquals(response.statusCode(), 200, "Something went wrong with the request");
-        List<Route> routes = response.as(List.class);
-        assertTrue(routes.size() > 10, "Not enough routes created");
-    }
-```
