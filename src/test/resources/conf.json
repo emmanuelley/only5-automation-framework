@@ -1,0 +1,89 @@
+{
+    "server": "hub-cloud.browserstack.com",
+    "user": "rajeshiyer1",
+    "key": "4pmxsVuAPPkeocQQJRWb",
+
+    "capabilities": {
+        "browserstack.debug": true
+    },
+
+    "environments": {
+        "iphone7": {
+            "device": "iPhone 7",
+            "realMobile": "true",
+            "os_version": "10.3"
+        },
+        "iphonex": {
+            "device": "iPhone X",
+            "realMobile": "true",
+            "os_version": "11.0"
+        },
+        "ipad5": {
+            "device": "iPad 5th",
+            "realMobile": "true",
+            "os_version": "11.0"
+        },
+        "safari_hs_1280_1024": {
+            "os": "OS X",
+            "os_version": "High Sierra",
+            "browser": "Safari",
+            "browser_version": "11.0",
+            "resolution": "1280x1024"
+        },
+        "safari_hs_1280_960": {
+            "os": "OS X",
+            "os_version": "High Sierra",
+            "browser": "Safari",
+            "browser_version": "11.0",
+            "resolution": "1280x960"
+        },
+        "windows_10_chrome_65": {
+            "os": "Windows",
+            "os_version": "10",
+            "browser": "Chrome",
+            "browser_version": "65.0",
+            "resolution": "1440x900"
+        },
+        "windows_10_firefox": {
+            "os": "Windows",
+            "os_version": "10",
+            "browser": "Firefox",
+            "browser_version": "60.0 beta",
+            "resolution": "1440x900"
+        },
+        "windows_10_edge": {
+            "os": "Windows",
+            "os_version": "10",
+            "browser": "Edge",
+            "browser_version": "16.0",
+            "resolution": "1440x900"
+        },
+        "windows_10_ie11": {
+            "os": "Windows",
+            "os_version": "10",
+            "browser": "IE",
+            "browser_version": "11.0",
+            "resolution": "1440x900"
+        },
+        "samsung_galaxy_s8": {
+            "device": "Samsung Galaxy S8",
+            "realMobile": "true",
+            "os_version": "7.0"
+        },
+        "motorola_moto_x": {
+            "device": "Motorola Moto X 2nd Gen",
+            "realMobile": "true",
+            "os_version": "6.0"
+        },
+        "google_pixel": {
+            "device": "Google Pixel",
+            "realMobile": "true",
+            "os_version": "8.0"
+        },
+        "samsung_galaxy_note_4": {
+            "device": "Samsung Galaxy Note 4",
+            "realMobile": "true",
+            "os_version": "6.0"
+        }
+    }
+}

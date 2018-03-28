@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Automation Suites">
+    <listeners>
+        <listener class-name="com.only5.automation_framework.base.ExtentReportListener"/>
+    </listeners>
+    <test name="Web Tests" thread-count="1">
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,5 @@
+target/
+nbactions.xml
+.settings
+.DS_Store
+debug.log

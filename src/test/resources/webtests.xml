@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="com.only5.automation_framework.base.ExtentReportListener"/>
+    </listeners>
+    <test name="iPhone 7">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="iphone7"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+
+    <test name="iPhone X">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="iphonex"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+
+    <test name="iPad 5">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="ipad5"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+
+    <test name="Safari HS 1280 x 1024">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="safari_hs_1280_1024"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Safari HS 1280 x 960">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="safari_hs_1280_960"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Windows 10 Chrome 65">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="windows_10_chrome_65"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Windows 10 Firefox 60">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="windows_10_firefox"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Windows 10 Edge 16">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="windows_10_edge"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Windows 10 IE 11">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="windows_10_ie11"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Samsung Galaxy S8">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="samsung_galaxy_s8"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Motorola Moto X">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="motorola_moto_x"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Google Pixel">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="google_pixel"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+    <test name="Samsung Galaxy Note 4">
+        <parameter name="config" value="conf.json"/>
+        <parameter name="environment" value="samsung_galaxy_note_4"/>
+        <classes>
+            <class name="com.only5.automation_framework.tests.WebTests"/>
+        </classes>
+    </test>
+</suite>
