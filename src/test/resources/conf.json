@@ -1,7 +1,7 @@
 {
     "server": "hub-cloud.browserstack.com",
-    "user": "rajeshiyer1",
-    "key": "4pmxsVuAPPkeocQQJRWb",
+    "user": "emmanuelley2",
+    "key": "qCqqFzsh1zGEYEPEX3yy",
 
     "capabilities": {
         "browserstack.debug": true
