@@ -4,7 +4,7 @@ jdk:
 sudo: false
 script: mvn clean test -P parallel
 after_failure: 
-  - export MY_LOG_DIR="$(pwd)/build/emmanuelley/only5-automation-framework/target/surefire-reports/html"
+  - export MY_LOG_DIR="$(pwd)/target/surefire-reports/html"
   - pwd && cd "${MY_LOG_DIR}" && pwd && ls -al
   - sudo apt-get install -qq lynx && lynx --dump index.html > myIndex.log
   - for file in *.log; do echo "$file"; echo "====================="; cat "$file"; done || true
