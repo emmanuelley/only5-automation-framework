@@ -43,7 +43,7 @@ public class DriverFactory {
                     System.setProperty("webdriver.chrome.driver", Configurations.CHROME_DRIVER_EXE);
                     capabilities = DesiredCapabilities.chrome();
                     options = new ChromeOptions();
-                    options.addArguments("test-type", "start-maximized", "no-default-browser-check", "--disable-extensions");
+                    options.addArguments("test-type", "start-maximized", "no-default-browser-check", "--disable-extensions", "--start-fullscreen");
                     capabilities.setCapability(ChromeOptions.CAPABILITY, options);
                     capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
                     capabilities.setPlatform(Platform.ANY);

@@ -19,6 +19,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -37,17 +38,64 @@ import org.slf4j.LoggerFactory;
 public class BasePage {
 
     protected WebDriver driver;
-    private final By errorDialog = By.xpath("//*[contains(@class,'x-window-dlg') and contains(@class,'x-component') and @tabindex='0' and descendant::span[text()='ERROR']]");
-    private final By messageBox = By.xpath("//div[contains(@class,'x-window') and contains(@class,'x-component') and @tabindex='0' and descendant::span[contains(text(),'Messages')]]");
-    private final By tabs = By.xpath("//*[contains(@class,'x-tab-panel-body') and contains(@class,'x-tab-panel-body-top')]/div");
+    By logoImg = By.className("logo");
+    By searchButton = By.className("varmo-icon-search");
+    By searchTextBox = By.xpath("//div[contains(@class,'block-search') and contains(@class,'show')]//input[@id='search']");
 
-    protected List<WebElement> getAllTabs() {
-        log().info("Getting the All Tabs...");
-        return waitForElementsBy(tabs);
+    By cartSection = By.className("showcart");
+    By cartSectionDropDown = By.xpath("//div[contains(@class,'minicart-wrapper') and contains(@class,'active')]//div[@role='dialog' and @style='display: block;']//div[@data-role='dropdownDialog']");
+    By checkoutButton = By.id("btn-minicart-close");
+
+    public boolean isLogoPresent() {
+        log().info("Checking if the logo is present");
+        return isElementPresent(logoImg);
     }
 
-    public boolean isErrorDialogPresent() {
-        return hasElement(errorDialog);
+    public CheckoutPage clickCheckout() {
+        log().info("Clicking on checkout");
+        waitForElement(cartSectionDropDown).findElement(checkoutButton).click();
+        return new CheckoutPage();
+    }
+
+    public int getCountOfItems() {
+        log().info("Getting the count of items added to the cart");
+        if (waitForElementGone(By.xpath("//div[@data-block='minicart']//*[@class='loading-mask']"))) {
+            return Integer.parseInt(waitForElement(cartSection).findElement(By.className("counter-number")).getText().trim());
+        } else {
+            throw new AssertionError("The loader image is still displayed!!! Something is wrong. Please check!!!");
+        }
+    }
+
+    public BasePage clickCart() {
+        log().info("Clicking on cart");
+        waitForElement(cartSection).click();
+        return this;
+    }
+
+    public BasePage clickSearchButton() {
+        log().info("Clicking Search Button...");
+        waitForElement(searchButton).click();
+        return this;
+    }
+
+    public boolean isSearchTextBoxPresent() {
+        log().info("Waiting for the Search Textbox to appear");
+        return isElementPresent(searchTextBox);
+    }
+
+    public <T extends BasePage> T enterSearchTextAndEnter(String searchText, Class<T> clazz) {
+        log().info("Entering search text: " + searchText + " into the search textbox");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(waitForElement(searchTextBox), searchText).sendKeys(Keys.ENTER).build().perform();
+        try {
+            return clazz.newInstance();
+        } catch (InstantiationException | IllegalAccessException ex) {
+            throw new AssertionError("Unable to create the instance of the class" + clazz.getName());
+        }
+    }
+
+    public boolean isCartSectionDisplayed() {
+        return isElementPresent(cartSectionDropDown);
     }
 
     public boolean waitForElementWithCondition(Function function) {
@@ -55,15 +103,6 @@ public class BasePage {
         wait.pollingEvery(5, TimeUnit.SECONDS)
                 .until(function);
         return true;
-    }
-
-    public boolean isMessageBoxPresent() {
-        log().info("Validating if Message Box is present...");
-        return isElementPresent(messageBox, 10);
-    }
-
-    public WebElement getMessageBox() {
-        return waitForElement(messageBox);
     }
 
     public BasePage() {
